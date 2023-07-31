@@ -1,5 +1,6 @@
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -8,15 +9,19 @@ export default function Header() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/" className="link">
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="shop">Shop</Link>
+            <NavLink to="shop" className="link">
+              Shop
+            </NavLink>
           </li>
           <li>
-            <Link to="checkout">
+            <NavLink to="checkout" className="link">
               <ShoppingCartIcon />
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>
