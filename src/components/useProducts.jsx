@@ -12,6 +12,9 @@ const useProducts = () => {
         const response = await axios.get(
           `https://fakestoreapi.com/products?limit=8`
         );
+        response.data.forEach((item) => {
+          item.quantity = 1;
+        });
         setProductList(response.data);
         setError(null);
       } catch (err) {

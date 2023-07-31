@@ -15,6 +15,13 @@ export default function Router() {
     setCart([...cart, product]);
   };
 
+  const handleQuantityChange = (productId, newQuantity) => {
+    const updatedCart = cart.map((item) =>
+      item.id === productId ? { ...item, quantity: newQuantity } : item
+    );
+    setCart(updatedCart);
+  };
+
   useEffect(() => {
     console.log(cart);
   }, [cart]);
@@ -43,7 +50,9 @@ export default function Router() {
         },
         {
           path: "checkout",
-          element: <Checkout cart={cart} />,
+          element: (
+            <Checkout cart={cart} handleQuantityChange={handleQuantityChange} />
+          ),
         },
       ],
     },

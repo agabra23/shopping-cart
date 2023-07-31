@@ -1,7 +1,21 @@
+import { useEffect, useState } from "react";
 import "../styles/Checkout.css";
+import CheckoutProduct from "./CheckoutProduct";
 
-export default function Checkout({ cart }) {
-  console.log("on checkout render", cart);
+export default function Checkout({ cart, handleQuantityChange }) {
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    calculateTotalPrice();
+  }, [cart]);
+
+  const calculateTotalPrice = () => {
+    const totalPrice = cart.reduce((total, item) => {
+      return item.price * item.quantity + total;
+    }, 0);
+
+    setTotal(totalPrice);
+  };
 
   if (!cart || cart.length === 0) return <h2>Cart is Empty</h2>;
   return (
@@ -23,23 +37,17 @@ export default function Checkout({ cart }) {
               <ul className="checkout-product-list">
                 {cart.map((item) => {
                   return (
-                    <li key={item.id} className="product-list-item">
-                      <img src={item.image} alt={item.title} width="100px" />
-                      <div className="product-list-info">
-                        <h4>{item.title}</h4>
-                        <div className="price-container">
-                          <input type="number" className="quantity" value={1} />
-                          <h4>${item.price.toFixed(2)}</h4>
-                        </div>
-                      </div>
-                      <button className="remove-item-btn">Remove</button>
-                    </li>
+                    <CheckoutProduct
+                      key={item.id}
+                      item={item}
+                      handleQuantityChange={handleQuantityChange}
+                    />
                   );
                 })}
               </ul>
             </div>
             <div className="checkout-container">
-              <h4>Estimated Total: Total</h4>
+              <h4>Estimated Total: ${total.toFixed(2)}</h4>
               <button>Proceed to Checkout</button>
             </div>
           </>
