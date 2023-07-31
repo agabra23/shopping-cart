@@ -40,7 +40,7 @@ export default function Router() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <App />,
+      element: <App itemCount={cart.length} />,
       errorElement: <ErrorPage />,
       children: [
         {

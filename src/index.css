@@ -36,6 +36,7 @@ header {
   align-items: center;
   padding: 2rem 3rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1;
 }
 
 @media (max-width: 600px) {
@@ -135,4 +136,20 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.cart-link {
+  position: relative;
+}
+
+.item-counter {
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  right: -10px;
+  background-color: rgba(255, 255, 255, 0.87);
+  z-index: 3;
+  padding: 0 6px;
+  color: #242424;
+  font-size: 0.7rem;
 }
