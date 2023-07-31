@@ -10,7 +10,7 @@ const useProducts = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://fakestoreapi.com/products?limit=5`
+          `https://fakestoreapi.com/products?limit=8`
         );
         setProductList(response.data);
         setError(null);

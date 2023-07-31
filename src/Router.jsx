@@ -4,6 +4,7 @@ import Shop from "./components/Shop";
 import ErrorPage from "./components/ErrorPage";
 import Home from "./components/Home";
 import Checkout from "./components/Checkout";
+import { useState } from "react";
 
 export default function Router() {
   const router = createBrowserRouter([
