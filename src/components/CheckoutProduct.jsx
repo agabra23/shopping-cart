@@ -1,4 +1,8 @@
-export default function CheckoutProduct({ item, handleQuantityChange }) {
+export default function CheckoutProduct({
+  item,
+  handleQuantityChange,
+  deleteItem,
+}) {
   const handleInputChange = (event) => {
     const newQuantity = parseInt(event.target.value, 10);
     if (isNaN(newQuantity) || newQuantity < 1) {
@@ -24,7 +28,9 @@ export default function CheckoutProduct({ item, handleQuantityChange }) {
           <h4>${(item.price * item.quantity).toFixed(2)}</h4>
         </div>
       </div>
-      <button className="remove-item-btn">Remove</button>
+      <button className="remove-item-btn" onClick={() => deleteItem(item.id)}>
+        Remove
+      </button>
     </li>
   );
 }

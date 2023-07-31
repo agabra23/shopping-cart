@@ -11,6 +11,17 @@ export default function Router() {
   const { productList, error, isLoading } = useProducts();
   const [cart, setCart] = useState([]);
 
+  const deleteItem = (id) => {
+    let targetIndex = 0;
+    cart.forEach((item, index) => {
+      if (item.id === id) targetIndex = index;
+    });
+
+    let tempCart = [...cart];
+    tempCart.splice(targetIndex, 1);
+    setCart(tempCart);
+  };
+
   const addToCart = (product) => {
     setCart([...cart, product]);
   };
@@ -51,7 +62,11 @@ export default function Router() {
         {
           path: "checkout",
           element: (
-            <Checkout cart={cart} handleQuantityChange={handleQuantityChange} />
+            <Checkout
+              cart={cart}
+              handleQuantityChange={handleQuantityChange}
+              deleteItem={deleteItem}
+            />
           ),
         },
       ],

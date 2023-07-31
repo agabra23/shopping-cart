@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../styles/Checkout.css";
 import CheckoutProduct from "./CheckoutProduct";
 
-export default function Checkout({ cart, handleQuantityChange }) {
+export default function Checkout({ cart, handleQuantityChange, deleteItem }) {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -41,6 +41,7 @@ export default function Checkout({ cart, handleQuantityChange }) {
                       key={item.id}
                       item={item}
                       handleQuantityChange={handleQuantityChange}
+                      deleteItem={deleteItem}
                     />
                   );
                 })}
