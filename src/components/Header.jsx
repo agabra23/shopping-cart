@@ -5,7 +5,9 @@ import { NavLink } from "react-router-dom";
 export default function Header({ itemCount }) {
   return (
     <header style={{ position: "relative" }}>
-      <h1>Finley's Cheese</h1>
+      <NavLink to="/" className="heading-link">
+        <h1>Finley's Cheese</h1>
+      </NavLink>
       <nav style={{ position: "relative" }}>
         <ul style={{ position: "relative" }}>
           <li>
