@@ -1,8 +1,7 @@
-import useProducts from "./useProducts";
 import "../styles/Shop.css";
 
-export default function Shop() {
-  const { productList, error, isLoading } = useProducts();
+export default function Shop({ productList, error, isLoading }) {
+  
 
   const formatPrice = (price) => {
     return price.toFixed(2);

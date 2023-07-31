@@ -5,8 +5,11 @@ import ErrorPage from "./components/ErrorPage";
 import Home from "./components/Home";
 import Checkout from "./components/Checkout";
 import { useState } from "react";
+import useProducts from "./components/useProducts";
 
 export default function Router() {
+  const { productList, error, isLoading } = useProducts();
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -20,7 +23,13 @@ export default function Router() {
 
         {
           path: "shop",
-          element: <Shop />,
+          element: (
+            <Shop
+              productList={productList}
+              error={error}
+              isLoading={isLoading}
+            />
+          ),
         },
         {
           path: "checkout",
