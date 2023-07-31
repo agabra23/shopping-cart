@@ -1,0 +1,39 @@
+.container {
+  flex: 1;
+  overflow: hidden;
+  background-image: url(../assets/cheese.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
+  display: flex;
+  place-content: center;
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(24, 24, 24, 0.8);
+  z-index: 0;
+}
+
+.header-text {
+  z-index: 2;
+  color: inherit;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 30vh;
+}
+
+.home-shop-button,
+.home-shop-button:hover {
+  color: rgba(255, 255, 255, 0.87);
+}
