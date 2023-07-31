@@ -13,26 +13,29 @@ export default function Shop() {
 
   return (
     productList && (
-      <div className="products-grid">
-        <ul>
-          {productList.map((product) => {
-            return (
-              <div className="product-div" key={product.id}>
-                <img src={product.image} alt={product.title} width="100px" />
+      <>
+        <div className="products-grid">
+          <h2>Shop</h2>
 
-                <div className="content-div">
-                  <h4>{product.title}</h4>
-                  <p>{product.category}</p>
+          <ul>
+            {productList.map((product) => {
+              return (
+                <div className="product-div" key={product.id}>
+                  <img src={product.image} alt={product.title} width="100px" />
+                  <div className="content-div">
+                    <h4>{product.title}</h4>
+                    <p>{product.category}</p>
+                  </div>
+                  <div className="btn-div">
+                    <h4>${formatPrice(product.price)}</h4>
+                    <button>Add to cart</button>
+                  </div>
                 </div>
-                <div className="btn-div">
-                  <h4>${formatPrice(product.price)}</h4>
-                  <button>Add to cart</button>
-                </div>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
+              );
+            })}
+          </ul>
+        </div>
+      </>
     )
   );
 }
