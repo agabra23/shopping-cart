@@ -1,8 +1,6 @@
 import "../styles/Shop.css";
 
-export default function Shop({ productList, error, isLoading }) {
-  
-
+export default function Shop({ productList, error, isLoading, addToCart }) {
   const formatPrice = (price) => {
     return price.toFixed(2);
   };
@@ -27,7 +25,9 @@ export default function Shop({ productList, error, isLoading }) {
                   </div>
                   <div className="btn-div">
                     <h4>${formatPrice(product.price)}</h4>
-                    <button>Add to cart</button>
+                    <button onClick={() => addToCart(product)}>
+                      Add to cart
+                    </button>
                   </div>
                 </div>
               );

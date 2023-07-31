@@ -4,11 +4,20 @@ import Shop from "./components/Shop";
 import ErrorPage from "./components/ErrorPage";
 import Home from "./components/Home";
 import Checkout from "./components/Checkout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useProducts from "./components/useProducts";
 
 export default function Router() {
   const { productList, error, isLoading } = useProducts();
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+  };
+
+  useEffect(() => {
+    console.log(cart);
+  }, [cart]);
 
   const router = createBrowserRouter([
     {
@@ -28,12 +37,13 @@ export default function Router() {
               productList={productList}
               error={error}
               isLoading={isLoading}
+              addToCart={addToCart}
             />
           ),
         },
         {
           path: "checkout",
-          element: <Checkout />,
+          element: <Checkout cart={cart} />,
         },
       ],
     },
