@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const useProducts = () => {
-  const [productList, setProductList] = useState(null);
+  const [productList, setProductList] = useState([]);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,17 +15,17 @@ const useProducts = () => {
         setProductList(response.data);
         setError(null);
       } catch (err) {
-        setError(er.message);
+        setError(err.message);
         setProductList(null);
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
-  return { productList, error, loading };
+  return { productList, error, isLoading };
 };
 
 export default useProducts;
